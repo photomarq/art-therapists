@@ -454,6 +454,95 @@
   .card.done { background: linear-gradient(180deg, #f3faf7, #ffffff); }
   .card.done .check { border-color: var(--shallow); background: #eef7f3; }
 
+  /* ---------- priority selector ---------- */
+  .priority {
+    display: flex;
+    gap: 5px;
+    margin-top: 14px;
+    background: #eef4f1;
+    padding: 4px;
+    border-radius: 13px;
+  }
+  .priority button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: .74rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    padding: 9px 4px;
+    border-radius: 9px;
+    cursor: pointer;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    line-height: 1;
+    transition: background .2s ease, color .2s ease, transform .14s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .priority button:active { transform: scale(.96); }
+  .priority button.on { color: #fff; box-shadow: 0 1px 3px rgba(14,77,74,.18); }
+  .priority button.on[data-pri="top"]   { background: #c79954; }
+  .priority button.on[data-pri="maybe"] { background: var(--sea); }
+  .priority button.on[data-pri="no"]    { background: #8a9692; }
+  .priority svg { display: block; flex: 0 0 auto; }
+
+  /* priority-driven card states */
+  .card.pri-top {
+    box-shadow: 0 0 0 2px rgba(199,153,84,.55), 0 2px 6px rgba(14,77,74,.07), 0 14px 38px rgba(14,77,74,.11);
+  }
+  .card.pri-top .idx { color: rgba(199,153,84,.22); }
+  .card.pri-no { opacity: .56; filter: saturate(.55); }
+  .card.pri-no:focus-within,
+  .card.pri-no:hover { opacity: .94; filter: saturate(.88); }
+
+  /* unique view-transition names so reordering animates smoothly when supported */
+  .card[data-id="siddiqui"] { view-transition-name: vt-siddiqui; }
+  .card[data-id="colton"]   { view-transition-name: vt-colton; }
+  .card[data-id="taylor"]   { view-transition-name: vt-taylor; }
+  .card[data-id="oconnell"] { view-transition-name: vt-oconnell; }
+
+  /* ---------- notes field ---------- */
+  .notes-wrap { margin-top: 12px; }
+  .notes-wrap label {
+    display: block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .notes-wrap textarea {
+    width: 100%;
+    min-height: 44px;
+    border: 1.5px solid var(--line);
+    border-radius: 13px;
+    padding: 11px 14px;
+    font-family: var(--sans);
+    font-size: .92rem;
+    line-height: 1.5;
+    color: var(--ink);
+    background: #fbfdfc;
+    resize: none;
+    overflow: hidden;
+    transition: border-color .2s ease, background .2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .notes-wrap textarea::placeholder {
+    color: #97a4a0;
+    font-style: italic;
+  }
+  .notes-wrap textarea:focus {
+    outline: none;
+    border-color: var(--surf);
+    background: #fff;
+  }
+
   /* ---------- secondary / other options ---------- */
   .mini {
     background: rgba(255,255,255,.7);
@@ -716,7 +805,7 @@
       </div>
     </div>
 
-    <p class="unranked reveal">Listed in no particular order — the right fit really comes down to insurance, current availability, and how you feel talking to them.</p>
+    <p class="unranked reveal">Listed in no particular order — the right fit comes down to insurance, availability, and how you click with someone. Use the buttons on each card to mark your top picks or rule any out; the list will reorder itself as you go.</p>
 
     <!-- card 1 -->
     <article class="card reveal" data-id="siddiqui">
@@ -752,6 +841,18 @@
         <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <span class="label">I've reached out</span>
       </label>
+      <div class="priority" role="group" aria-label="Your interest level">
+        <button type="button" data-pri="top">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 7.6H22l-6.4 4.7 2.4 7.7L12 17.3l-6 4.7 2.4-7.7L2 9.6h7.4z"/></svg>
+          Top choice
+        </button>
+        <button type="button" data-pri="maybe">Maybe</button>
+        <button type="button" data-pri="no">Not for me</button>
+      </div>
+      <div class="notes-wrap">
+        <label for="notes-siddiqui">Notes</label>
+        <textarea id="notes-siddiqui" rows="1" placeholder="Anything you want to remember — vibes from the call, follow-ups, questions to ask…"></textarea>
+      </div>
     </article>
 
     <!-- card 2 -->
@@ -788,6 +889,18 @@
         <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <span class="label">I've reached out</span>
       </label>
+      <div class="priority" role="group" aria-label="Your interest level">
+        <button type="button" data-pri="top">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 7.6H22l-6.4 4.7 2.4 7.7L12 17.3l-6 4.7 2.4-7.7L2 9.6h7.4z"/></svg>
+          Top choice
+        </button>
+        <button type="button" data-pri="maybe">Maybe</button>
+        <button type="button" data-pri="no">Not for me</button>
+      </div>
+      <div class="notes-wrap">
+        <label for="notes-colton">Notes</label>
+        <textarea id="notes-colton" rows="1" placeholder="Anything you want to remember — vibes from the call, follow-ups, questions to ask…"></textarea>
+      </div>
     </article>
 
     <!-- card 3 -->
@@ -824,6 +937,18 @@
         <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <span class="label">I've reached out</span>
       </label>
+      <div class="priority" role="group" aria-label="Your interest level">
+        <button type="button" data-pri="top">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 7.6H22l-6.4 4.7 2.4 7.7L12 17.3l-6 4.7 2.4-7.7L2 9.6h7.4z"/></svg>
+          Top choice
+        </button>
+        <button type="button" data-pri="maybe">Maybe</button>
+        <button type="button" data-pri="no">Not for me</button>
+      </div>
+      <div class="notes-wrap">
+        <label for="notes-taylor">Notes</label>
+        <textarea id="notes-taylor" rows="1" placeholder="Anything you want to remember — vibes from the call, follow-ups, questions to ask…"></textarea>
+      </div>
     </article>
 
     <!-- card 4 -->
@@ -860,6 +985,18 @@
         <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         <span class="label">I've reached out</span>
       </label>
+      <div class="priority" role="group" aria-label="Your interest level">
+        <button type="button" data-pri="top">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.6 7.6H22l-6.4 4.7 2.4 7.7L12 17.3l-6 4.7 2.4-7.7L2 9.6h7.4z"/></svg>
+          Top choice
+        </button>
+        <button type="button" data-pri="maybe">Maybe</button>
+        <button type="button" data-pri="no">Not for me</button>
+      </div>
+      <div class="notes-wrap">
+        <label for="notes-oconnell">Notes</label>
+        <textarea id="notes-oconnell" rows="1" placeholder="Anything you want to remember — vibes from the call, follow-ups, questions to ask…"></textarea>
+      </div>
     </article>
   </section>
 
@@ -986,10 +1123,25 @@
 
     /* ---- persistence (graceful if storage is unavailable) ---- */
     function loadState() {
+      var empty = { reached: {}, priority: {}, notes: {} };
       try {
         var raw = window.localStorage.getItem(STORE_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch (e) { return {}; }
+        if (!raw) return empty;
+        var parsed = JSON.parse(raw);
+        // Migration: old format was a flat object of { id: boolean } for "reached"
+        if (parsed && typeof parsed === "object" && !parsed.reached && !parsed.priority && !parsed.notes) {
+          var migrated = { reached: {}, priority: {}, notes: {} };
+          Object.keys(parsed).forEach(function (k) {
+            if (typeof parsed[k] === "boolean") migrated.reached[k] = parsed[k];
+          });
+          return migrated;
+        }
+        return {
+          reached: (parsed && parsed.reached) || {},
+          priority: (parsed && parsed.priority) || {},
+          notes: (parsed && parsed.notes) || {}
+        };
+      } catch (e) { return empty; }
     }
     function saveState(state) {
       try { window.localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
@@ -998,36 +1150,136 @@
 
     var state = loadState();
     var cards = Array.prototype.slice.call(document.querySelectorAll(".card[data-id]"));
+    var originalOrder = {};
+    cards.forEach(function (c, i) { originalOrder[c.getAttribute("data-id")] = i; });
     var countEl = document.getElementById("count");
     var barEl = document.getElementById("progressBar");
     var labelEl = document.getElementById("progressLabel");
     var total = cards.length;
+
+    function reduceMotion() {
+      return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
 
     function refreshProgress() {
       var done = 0;
       cards.forEach(function (card) { if (card.classList.contains("done")) done++; });
       countEl.textContent = done;
       barEl.style.width = (total ? (done / total) * 100 : 0) + "%";
-      if (done === 0) labelEl.textContent = "of " + total + " reached out";
-      else if (done === total) labelEl.textContent = "all " + total + " contacted — nicely done";
+      if (done === total && total > 0) labelEl.textContent = "all " + total + " contacted — nicely done";
       else labelEl.textContent = "of " + total + " reached out";
     }
 
+    /* ---- card ordering by priority ----
+       order: top (0) → unset/maybe (1) → no (2); stable within tiers via original index */
+    function priRank(card) {
+      if (card.classList.contains("pri-top")) return 0;
+      if (card.classList.contains("pri-no")) return 2;
+      return 1;
+    }
+    function applyOrder() {
+      var section = cards[0].parentElement;
+      var sorted = cards.slice().sort(function (a, b) {
+        var diff = priRank(a) - priRank(b);
+        if (diff !== 0) return diff;
+        return originalOrder[a.getAttribute("data-id")] - originalOrder[b.getAttribute("data-id")];
+      });
+      sorted.forEach(function (card) { section.appendChild(card); });
+    }
+    function reorderCards() {
+      if (document.startViewTransition && !reduceMotion()) {
+        document.startViewTransition(applyOrder);
+      } else {
+        applyOrder();
+      }
+    }
+
+    /* ---- auto-grow textarea ---- */
+    function autogrow(ta) {
+      ta.style.height = "auto";
+      ta.style.height = ta.scrollHeight + "px";
+    }
+
+    /* ---- wire up each card ---- */
     cards.forEach(function (card) {
       var id = card.getAttribute("data-id");
+
+      /* reached-out checkbox */
       var input = card.querySelector('input[type="checkbox"]');
-      if (state[id]) {
+      if (state.reached[id]) {
         input.checked = true;
         card.classList.add("done");
       }
       input.addEventListener("change", function () {
         card.classList.toggle("done", input.checked);
-        state[id] = input.checked;
+        state.reached[id] = input.checked;
         saveState(state);
         refreshProgress();
       });
+
+      /* priority buttons */
+      var priButtons = Array.prototype.slice.call(card.querySelectorAll(".priority button"));
+      var currentPri = state.priority[id] || null;
+      function applyPriClasses(pri) {
+        card.classList.remove("pri-top", "pri-maybe", "pri-no");
+        if (pri) card.classList.add("pri-" + pri);
+        priButtons.forEach(function (b) {
+          b.classList.toggle("on", b.getAttribute("data-pri") === pri);
+          b.setAttribute("aria-pressed", b.getAttribute("data-pri") === pri ? "true" : "false");
+        });
+      }
+      applyPriClasses(currentPri);
+      priButtons.forEach(function (b) {
+        b.addEventListener("click", function () {
+          var chosen = b.getAttribute("data-pri");
+          // tap the active one again to unset
+          var next = (currentPri === chosen) ? null : chosen;
+          currentPri = next;
+          if (next) state.priority[id] = next;
+          else delete state.priority[id];
+          saveState(state);
+          if (document.startViewTransition && !reduceMotion()) {
+            document.startViewTransition(function () {
+              applyPriClasses(next);
+              applyOrder();
+            });
+          } else {
+            applyPriClasses(next);
+            applyOrder();
+          }
+        });
+      });
+
+      /* notes textarea */
+      var ta = card.querySelector(".notes-wrap textarea");
+      if (state.notes[id]) {
+        ta.value = state.notes[id];
+      }
+      // initial autogrow (after a tick so layout is ready)
+      requestAnimationFrame(function () { autogrow(ta); });
+      var saveTimer = null;
+      ta.addEventListener("input", function () {
+        autogrow(ta);
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () {
+          var v = ta.value.trim();
+          if (v) state.notes[id] = ta.value;
+          else delete state.notes[id];
+          saveState(state);
+        }, 400);
+      });
+      ta.addEventListener("blur", function () {
+        if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+        var v = ta.value.trim();
+        if (v) state.notes[id] = ta.value;
+        else delete state.notes[id];
+        saveState(state);
+      });
     });
+
     refreshProgress();
+    // initial sort in case priorities were restored from storage
+    applyOrder();
 
     /* ---- gentle reveal on scroll ---- */
     var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
