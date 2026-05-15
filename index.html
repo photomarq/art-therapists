@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0e4d4a" />
+<title>Twin Cities Trauma &amp; Art Therapy — A Gathered Resource</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --deep:    #0e4d4a;
+    --sea:     #1f7a73;
+    --surf:    #4fb3a8;
+    --shallow: #8fd4c9;
+    --foam:    #d6ebe4;
+    --sand:    #f1e8d6;
+    --cream:   #faf8f2;
+    --ink:     #16302e;
+    --ink-soft:#52635f;
+    --line:    #dfe7e2;
+    --white:   #ffffff;
+    --shadow-sm: 0 1px 2px rgba(14,77,74,.06), 0 4px 14px rgba(14,77,74,.06);
+    --shadow-md: 0 2px 6px rgba(14,77,74,.07), 0 14px 38px rgba(14,77,74,.11);
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-size: 16.5px;
+    letter-spacing: .002em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* atmosphere: wading from shallow water onto warm sand */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(120% 60% at 80% -10%, rgba(143,212,201,.55), transparent 60%),
+      linear-gradient(180deg, var(--foam) 0%, #e8f1ec 22%, var(--cream) 52%, var(--cream) 100%);
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: .5;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/></svg>");
+  }
+
+  .wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding:
+      calc(env(safe-area-inset-top) + 6px)
+      calc(env(safe-area-inset-right) + 20px)
+      calc(env(safe-area-inset-bottom) + 56px)
+      calc(env(safe-area-inset-left) + 20px);
+  }
+
+  /* ---------- header ---------- */
+  header {
+    position: relative;
+    padding: 54px 0 22px;
+    text-align: left;
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+    color: var(--sea);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .kicker::before {
+    content: "";
+    width: 26px;
+    height: 1.5px;
+    background: var(--surf);
+    display: inline-block;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: clamp(2.45rem, 11vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: -.018em;
+    color: var(--deep);
+    margin: 18px 0 0;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sea);
+  }
+  .lede {
+    margin-top: 16px;
+    font-size: 1.04rem;
+    color: var(--ink-soft);
+    max-width: 38ch;
+  }
+
+  /* layered waves between header and body */
+  .waves {
+    display: block;
+    width: 100%;
+    height: 56px;
+    margin: 26px 0 0;
+  }
+  .waves path { opacity: .9; }
+
+  /* ---------- the note ---------- */
+  .note {
+    position: relative;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 26px 24px 24px;
+    box-shadow: var(--shadow-md);
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .note::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--surf), var(--sea));
+  }
+  .note .tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.06rem;
+    color: var(--sea);
+    margin-bottom: 8px;
+  }
+  .note p { color: var(--ink); margin-bottom: 11px; }
+  .note p:last-child { margin-bottom: 0; }
+  .note .sign {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* how-to strip */
+  .howto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .howto div {
+    background: rgba(255,255,255,.66);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    line-height: 1.3;
+  }
+  .howto svg { display: block; margin: 0 auto 6px; }
+
+  /* ---------- section scaffolding ---------- */
+  section { margin-top: 46px; }
+  .sec-head { margin-bottom: 18px; }
+  .sec-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--surf);
+  }
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.72rem;
+    line-height: 1.18;
+    letter-spacing: -.015em;
+    color: var(--deep);
+    margin-top: 2px;
+  }
+  .sec-head p {
+    margin-top: 8px;
+    color: var(--ink-soft);
+    font-size: .98rem;
+  }
+
+  /* ---------- orientation card ---------- */
+  .orient {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 22px 22px 8px;
+    box-shadow: var(--shadow-sm);
+  }
+  .orient .row {
+    display: flex;
+    gap: 14px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .orient .row:last-child { border-bottom: none; }
+  .orient .dot {
+    flex: 0 0 auto;
+    width: 34px; height: 34px;
+    border-radius: 11px;
+    background: var(--foam);
+    color: var(--sea);
+    display: grid;
+    place-items: center;
+  }
+  .orient h3 {
+    font-family: var(--sans);
+    font-size: .98rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .orient .row p { font-size: .94rem; color: var(--ink-soft); }
+  .orient code {
+    font-family: var(--sans);
+    font-weight: 700;
+    color: var(--sea);
+    background: var(--foam);
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: .86em;
+    white-space: nowrap;
+  }
+
+  /* ---------- progress ---------- */
+  .progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+  }
+  .progress .count {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--deep);
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  .progress .meta { flex: 1 1 auto; min-width: 0; }
+  .progress .meta span {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .bar {
+    height: 7px;
+    border-radius: 99px;
+    background: var(--foam);
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .bar i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--surf), var(--sea));
+    transition: width .5s cubic-bezier(.4,0,.2,1);
+  }
+
+  .unranked {
+    font-size: .9rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: var(--serif);
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 2px solid var(--shallow);
+  }
+
+  /* ---------- practitioner cards ---------- */
+  .card {
+    position: relative;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px 22px 20px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: background .4s ease;
+  }
+  .card .idx {
+    position: absolute;
+    top: 14px; right: 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: var(--foam);
+    line-height: 1;
+    user-select: none;
+  }
+  .card .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -.01em;
+    color: var(--deep);
+    padding-right: 48px;
+  }
+  .card .creds {
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--sea);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 14px 0 16px;
+  }
+  .tags span {
+    font-size: .76rem;
+    font-weight: 600;
+    color: var(--sea);
+    background: var(--foam);
+    border-radius: 99px;
+    padding: 4px 11px;
+  }
+
+  .facts { display: grid; gap: 11px; }
+  .fact {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 12px;
+    font-size: .93rem;
+  }
+  .fact dt {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+  .fact dd { color: var(--ink); }
+  .fact.good dd { color: var(--ink-soft); }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 3px 10px 3px 8px;
+    border-radius: 99px;
+  }
+  .badge::before {
+    content: "";
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+  .badge.active { background: #e3f3ec; color: #1b6b4d; }
+  .badge.active::before { background: #2f9c6f; }
+  .badge.wait { background: #fbeede; color: #9a6516; }
+  .badge.wait::before { background: #d68a26; }
+
+  /* action buttons */
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .actions a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 11px 4px;
+    border-radius: 13px;
+    background: var(--foam);
+    color: var(--sea);
+    text-decoration: none;
+    font-size: .78rem;
+    font-weight: 700;
+    min-height: 44px;
+    justify-content: center;
+    transition: transform .14s ease, background .2s ease, color .2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .actions a:active { transform: scale(.95); background: var(--surf); color: #fff; }
+  .actions a svg { transition: transform .2s ease; }
+
+  /* reached-out checkbox */
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .check input { position: absolute; opacity: 0; pointer-events: none; }
+  .check .box {
+    flex: 0 0 auto;
+    width: 22px; height: 22px;
+    border-radius: 7px;
+    border: 2px solid var(--shallow);
+    display: grid;
+    place-items: center;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .check .box svg { opacity: 0; transform: scale(.4); transition: all .2s cubic-bezier(.34,1.56,.64,1); }
+  .check .label {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .check input:checked ~ .box {
+    background: var(--sea);
+    border-color: var(--sea);
+  }
+  .check input:checked ~ .box svg { opacity: 1; transform: scale(1); }
+  .check input:checked ~ .label { color: var(--sea); }
+
+  .card.done { background: linear-gradient(180deg, #f3faf7, #ffffff); }
+  .card.done .check { border-color: var(--shallow); background: #eef7f3; }
+
+  /* ---------- secondary / other options ---------- */
+  .mini {
+    background: rgba(255,255,255,.7);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    margin-bottom: 12px;
+  }
+  .mini .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.18rem;
+    color: var(--deep);
+  }
+  .mini .creds {
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--sea);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .mini p {
+    font-size: .9rem;
+    color: var(--ink-soft);
+    margin: 8px 0 12px;
+  }
+  .mini .mini-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .mini .mini-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--sea);
+    text-decoration: none;
+    background: var(--foam);
+    padding: 7px 12px;
+    border-radius: 10px;
+    min-height: 38px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mini .mini-actions a:active { background: var(--surf); color: #fff; }
+
+  /* ---------- "what good looks like" ---------- */
+  .practice {
+    background: linear-gradient(165deg, var(--deep), #0a3d3a);
+    border-radius: 20px;
+    padding: 26px 24px;
+    color: #d9ece8;
+    box-shadow: var(--shadow-md);
+  }
+  .practice h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: -.01em;
+  }
+  .practice .intro {
+    margin-top: 8px;
+    font-size: .95rem;
+    color: var(--shallow);
+  }
+  .practice ol {
+    list-style: none;
+    margin-top: 18px;
+    counter-reset: p;
+  }
+  .practice li {
+    counter-increment: p;
+    position: relative;
+    padding: 14px 0 14px 42px;
+    border-top: 1px solid rgba(143,212,201,.18);
+    font-size: .94rem;
+  }
+  .practice li:first-child { border-top: none; padding-top: 4px; }
+  .practice li::before {
+    content: counter(p);
+    position: absolute;
+    left: 0; top: 13px;
+    width: 28px; height: 28px;
+    background: rgba(143,212,201,.16);
+    color: var(--shallow);
+    border-radius: 9px;
+    font-family: var(--serif);
+    font-style: italic;
+    display: grid;
+    place-items: center;
+    font-size: .95rem;
+  }
+  .practice li:first-child::before { top: 3px; }
+  .practice li b { color: #fff; font-weight: 600; }
+
+  /* ---------- caveats ---------- */
+  .caveat {
+    display: flex;
+    gap: 13px;
+    background: var(--sand);
+    border-radius: 16px;
+    padding: 18px 18px;
+    margin-bottom: 12px;
+  }
+  .caveat svg { flex: 0 0 auto; margin-top: 2px; color: #9a6516; }
+  .caveat h3 {
+    font-size: .96rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .caveat p { font-size: .9rem; color: var(--ink-soft); }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 48px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  footer .mark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--sea);
+  }
+  footer p {
+    font-size: .82rem;
+    color: var(--ink-soft);
+    margin-top: 8px;
+    max-width: 42ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer .date {
+    margin-top: 14px;
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--surf);
+    font-weight: 600;
+  }
+
+  /* ---------- reveal animation ---------- */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .js .reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);
+  }
+
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .wave-drift { animation: drift 18s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .wave-drift { animation: none; }
+    .actions a:active, .check, .bar i { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <span class="kicker">Gathered with care</span>
+    <h1>Twin&nbsp;Cities trauma&nbsp;&amp; <em>art&nbsp;therapy</em></h1>
+    <p class="lede">A short, hand-picked list of the strongest trauma-focused art therapists in the metro — and how to reach them.</p>
+
+    <svg class="waves" viewBox="0 0 600 56" preserveAspectRatio="none" aria-hidden="true">
+      <g class="wave-drift">
+        <path d="M0 34 C 75 18, 150 50, 225 34 S 375 18, 450 34 S 600 50, 675 34 S 825 18, 900 34 S 1050 50, 1125 34 S 1200 34, 1200 34 L1200 56 L0 56 Z" fill="#8fd4c9" opacity="0.55"/>
+        <path d="M0 42 C 75 30, 150 56, 225 42 S 375 30, 450 42 S 600 56, 675 42 S 825 30, 900 42 S 1050 56, 1125 42 L1200 42 L1200 56 L0 56 Z" fill="#4fb3a8" opacity="0.7"/>
+      </g>
+    </svg>
+  </header>
+
+  <!-- ============ THE NOTE ============ -->
+  <div class="note reveal">
+    <div class="tag">A note for you —</div>
+    <p>You mentioned wanting to find the right person to work with, so I did some digging into trauma-focused art therapists around the Twin Cities and pulled the strongest few into one place.</p>
+    <p>Everything you'd need to make a first call is here — what each person specializes in, what insurance they take, and a button to call or find them. There's a little checkbox on each one so you can keep track of who you've reached out to.</p>
+    <p>Let me know, whatever you need, whenever it comes up 🫶</p>
+    <p class="sign">— with love, kp</p>
+
+    <div class="howto">
+      <div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Tap to call
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Tap for maps
+      </div>
+      <div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Check off as you go
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ORIENTATION ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-num">i.</span>
+      <h2>What you're looking for</h2>
+      <p>A quick orientation, so the credentials below make sense at a glance.</p>
+    </div>
+
+    <div class="orient reveal">
+      <div class="row">
+        <div class="dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <div>
+          <h3>The credential to look for</h3>
+          <p><code>ATR-BC</code> means a board-certified registered art therapist — the gold standard from the national Art Therapy Credentials Board. The best trauma art therapists pair it with a state counseling license like <code>LPCC</code> or <code>LMFT</code>.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div>
+          <h3>Plus a trauma method that fits</h3>
+          <p>On top of art therapy, strong trauma clinicians train in an evidence-based approach — <b>EMDR</b>, <b>Anchored Relational Therapy</b>, <b>Brainspotting</b>, <b>Somatic Experiencing</b>, or <b>IFS</b>. Every primary name here has at least one.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <div>
+          <h3>One Minnesota quirk</h3>
+          <p>Minnesota doesn't license art therapists at the state level yet — a bill is pending. Until it passes, that <code>ATR-BC</code> + counseling-license combination <em>is</em> the quality signal. Good news: it's what this whole list is built on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE PRACTITIONERS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-num">ii.</span>
+      <h2>The shortlist</h2>
+      <p>Four clinicians worth a first call — each board-certified, each with advanced trauma training.</p>
+    </div>
+
+    <div class="progress reveal">
+      <div class="count" id="count">0</div>
+      <div class="meta">
+        <span id="progressLabel">of 4 reached out</span>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+    </div>
+
+    <p class="unranked reveal">Listed in no particular order — the right fit really comes down to insurance, current availability, and how you feel talking to them.</p>
+
+    <!-- card 1 -->
+    <article class="card reveal" data-id="siddiqui">
+      <span class="idx">01</span>
+      <div class="name">Maria K. Siddiqui</div>
+      <div class="creds">MA · ATR-BC · LPCC · NCC</div>
+      <div class="tags">
+        <span>EMDR</span><span>Anchored Relational</span><span>Art therapy</span><span>Somatic</span><span>PTSD &amp; dissociation</span>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Practice</dt><dd>The Luminous Mind — Roseville</dd></div>
+        <div class="fact"><dt>Focus</dt><dd>Complex, developmental &amp; religious trauma; PTSD and dissociation; works from a decolonized, anti-oppressive frame.</dd></div>
+        <div class="fact"><dt>Insurance</dt><dd>Aetna, BCBS-MN, HealthPartners, UCare, Medicaid, PreferredOne, UnitedHealthcare</dd></div>
+        <div class="fact good"><dt>Good to know</dt><dd>Multilingual; the clinic is a broadly culturally affirming environment. Strong all-around match on credentials and approach.</dd></div>
+        <div class="fact"><dt>Status</dt><dd><span class="badge active">Accepting clients</span></dd></div>
+      </dl>
+      <div class="actions">
+        <a href="tel:+16513001112" aria-label="Call Maria Siddiqui">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://www.theluminousmind.com/our-team/maria" target="_blank" rel="noopener" aria-label="Visit Maria Siddiqui's profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Luminous%20Mind%2C%201611%20County%20Road%20B%20W%20Suite%20202%2C%20Roseville%2C%20MN%2055113" target="_blank" rel="noopener" aria-label="Open map for The Luminous Mind">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+      <label class="check">
+        <input type="checkbox" />
+        <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="label">I've reached out</span>
+      </label>
+    </article>
+
+    <!-- card 2 -->
+    <article class="card reveal" data-id="colton">
+      <span class="idx">02</span>
+      <div class="name">Briana Colton</div>
+      <div class="creds">MA · ATR-BC · LPCC · PACC</div>
+      <div class="tags">
+        <span>Anchored Relational</span><span>Complex trauma</span><span>Art therapy</span><span>CBT</span><span>Narrative</span>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Practice</dt><dd>Conscious Healing Counseling — New Brighton / Andover / Ramsey</dd></div>
+        <div class="fact"><dt>Focus</dt><dd>Anchored Relational Therapy for complex trauma; 10+ years of experience with individuals and families.</dd></div>
+        <div class="fact"><dt>Insurance</dt><dd>PreferredOne, Cigna, MN Medicaid, Medica, UCare, HealthPartners, BCBS</dd></div>
+        <div class="fact good"><dt>Good to know</dt><dd>Free 30-minute first consultation. Takes a wide range of insurance — one of the easiest to get started with.</dd></div>
+        <div class="fact"><dt>Status</dt><dd><span class="badge active">Accepting clients</span></dd></div>
+      </dl>
+      <div class="actions">
+        <a href="tel:+16129000233" aria-label="Call Briana Colton">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://www.conscioushealingcounseling.com/briana-colton" target="_blank" rel="noopener" aria-label="Visit Briana Colton's profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Conscious%20Healing%20Counseling%2C%20New%20Brighton%2C%20MN" target="_blank" rel="noopener" aria-label="Open map for Conscious Healing Counseling">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+      <label class="check">
+        <input type="checkbox" />
+        <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="label">I've reached out</span>
+      </label>
+    </article>
+
+    <!-- card 3 -->
+    <article class="card reveal" data-id="taylor">
+      <span class="idx">03</span>
+      <div class="name">Emily Taylor</div>
+      <div class="creds">MA · ATR-BC · LPCC</div>
+      <div class="tags">
+        <span>Anchored Relational (trauma-certified)</span><span>Neuroscience-based art therapy</span><span>Complex PTSD</span>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Practice</dt><dd>Art Therapy Alchemy — NE Minneapolis</dd></div>
+        <div class="fact"><dt>Focus</dt><dd>Trauma-certified through Anchored Relational Therapy; a self-described specialist in complex PTSD, with neuroscience-based art therapy.</dd></div>
+        <div class="fact"><dt>Insurance</dt><dd>Self-pay; provides superbills for out-of-network reimbursement; HSA/FSA accepted</dd></div>
+        <div class="fact good"><dt>Good to know</dt><dd>Free 15-minute consultation. The deepest pure trauma-art-therapy specialist here — worth it if self-pay works for you.</dd></div>
+        <div class="fact"><dt>Status</dt><dd><span class="badge active">Accepting clients</span></dd></div>
+      </dl>
+      <div class="actions">
+        <a href="tel:+16515043274" aria-label="Call Emily Taylor">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://www.arttherapyalchemy.com/bio" target="_blank" rel="noopener" aria-label="Visit Emily Taylor's profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Art%20Therapy%20Alchemy%2C%20Minneapolis%2C%20MN%2055418" target="_blank" rel="noopener" aria-label="Open map for Art Therapy Alchemy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+      <label class="check">
+        <input type="checkbox" />
+        <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="label">I've reached out</span>
+      </label>
+    </article>
+
+    <!-- card 4 -->
+    <article class="card reveal" data-id="oconnell">
+      <span class="idx">04</span>
+      <div class="name">Auden O'Connell</div>
+      <div class="creds">LPCC · ATR-BC</div>
+      <div class="tags">
+        <span>EMDR</span><span>Brainspotting</span><span>Somatic Experiencing</span><span>IFS</span><span>C-PTSD</span>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Practice</dt><dd>Northeast Art Therapy — NE Minneapolis</dd></div>
+        <div class="fact"><dt>Focus</dt><dd>One of the deepest trauma-training stacks in the metro; 12+ years with adults navigating C-PTSD and PTSD.</dd></div>
+        <div class="fact"><dt>Insurance</dt><dd>Private pay; Open Path member (reduced-fee option) — verify directly</dd></div>
+        <div class="fact good"><dt>Good to know</dt><dd>Currently waitlisted, so not a fast start — but a top-tier clinician. Worth getting on the list as a longer-term option.</dd></div>
+        <div class="fact"><dt>Status</dt><dd><span class="badge wait">Waitlist for new clients</span></dd></div>
+      </dl>
+      <div class="actions">
+        <a href="tel:+16125099987" aria-label="Call Auden O'Connell">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://nearttherapy.com/meet-auden" target="_blank" rel="noopener" aria-label="Visit Auden O'Connell's profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Northeast%20Art%20Therapy%2C%2079%2013th%20Ave%20NE%20Suite%20103A%2C%20Minneapolis%2C%20MN%2055413" target="_blank" rel="noopener" aria-label="Open map for Northeast Art Therapy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+      <label class="check">
+        <input type="checkbox" />
+        <span class="box"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="label">I've reached out</span>
+      </label>
+    </article>
+  </section>
+
+  <!-- ============ OTHER OPTIONS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-num">iii.</span>
+      <h2>A few more, if you need them</h2>
+      <p>Also board-certified art therapists with a trauma focus — good backups if the shortlist has long waits.</p>
+    </div>
+
+    <div class="mini reveal">
+      <div class="name">Maggie Evans</div>
+      <div class="creds">LPCC · ATR-BC</div>
+      <p>Private practice in the Ivy Arts Building, S. Minneapolis. Nearly 20 years of trauma-sensitive work blending psychodynamic, attachment, and IFS approaches. Self-pay only (Open Path option).</p>
+      <div class="mini-actions">
+        <a href="tel:+16129792833">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://maggieevansarttherapy.com" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=2637%2027th%20Ave%20S%2C%20Minneapolis%2C%20MN%2055406" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+    </div>
+
+    <div class="mini reveal">
+      <div class="name">Tessa Larson Wolden</div>
+      <div class="creds">MA · ATR-BC · LPCC</div>
+      <p>Affinity Psychological Services in Edina (also St. Louis Park &amp; St. Cloud). Combines art therapy with verbal processing and nature-based interventions. Confirm insurance with the clinic.</p>
+      <div class="mini-actions">
+        <a href="https://affinitypsych.com/clinician/tessa-wolden/" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Affinity%20Psychological%20Services%2C%207401%20Metro%20Blvd%20Suite%20250%2C%20Edina%2C%20MN%2055439" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+    </div>
+
+    <div class="mini reveal">
+      <div class="name">Maddie Johnson</div>
+      <div class="creds">MA · LMFT · ATR-BC</div>
+      <p>Heart Space Art Therapy Studio, Minneapolis. Relational, experiential, trauma-informed work blending art therapy, expressive arts, and mind-body techniques. Confirm insurance with the clinic.</p>
+      <div class="mini-actions">
+        <a href="tel:+16122601542">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://www.heartspacetherapy.org/providers" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Heart%20Space%2C%207400%20Lyndale%20Ave%20S%20Suite%20180%2C%20Minneapolis%2C%20MN%2055423" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Map
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT GOOD LOOKS LIKE ============ -->
+  <section>
+    <div class="practice reveal">
+      <h2>What good trauma art therapy feels like</h2>
+      <p class="intro">So you know what to expect — and what a skilled clinician should and shouldn't do.</p>
+      <ol>
+        <li><b>Stability comes first.</b> Early sessions focus on grounding and feeling safe — not diving straight into the hard memories.</li>
+        <li><b>Materials are chosen with intention.</b> Fluid media like watercolor or clay for release; firmer media like pencil for containment and control.</li>
+        <li><b>Art is paired with a real trauma method.</b> The making is woven together with an evidence-based approach like EMDR or Anchored Relational Therapy.</li>
+        <li><b>It can be wordless when it needs to be.</b> Art can move around the verbal-memory bottleneck that trauma often creates.</li>
+        <li><b>It always moves at your pace.</b> A good therapist never pushes past your consent or capacity. Ever.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CAVEATS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-num">iv.</span>
+      <h2>Two quick things to keep in mind</h2>
+    </div>
+
+    <div class="caveat reveal">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div>
+        <h3>Always confirm before you schedule</h3>
+        <p>Waitlists and insurance networks shift often. A quick call to check current availability — and that your plan is in-network — saves a lot of hassle before a first appointment.</p>
+      </div>
+    </div>
+
+    <div class="caveat reveal">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div>
+        <h3>Why credentials matter extra here</h3>
+        <p>Minnesota doesn't license art therapists yet, so there's no state board doing the vetting. The <b>ATR-BC</b> + counseling-license combo is the consumer's best quality signal — and it's the bar every primary name here clears.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="mark">Take your time with it.</div>
+    <p>This is a starting point, not medical advice — just a way to make the first call a little easier. Whatever you decide, and whenever, is the right pace.</p>
+    <div class="date">Gathered May 2026 · Twin Cities metro</div>
+  </footer>
+
+</div>
+
+<script>
+  document.body.classList.add("js");
+
+  (function () {
+    "use strict";
+
+    var STORE_KEY = "tc-art-therapy-reachout";
+
+    /* ---- persistence (graceful if storage is unavailable) ---- */
+    function loadState() {
+      try {
+        var raw = window.localStorage.getItem(STORE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) { return {}; }
+    }
+    function saveState(state) {
+      try { window.localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+      catch (e) { /* in-memory only — still works for this visit */ }
+    }
+
+    var state = loadState();
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".card[data-id]"));
+    var countEl = document.getElementById("count");
+    var barEl = document.getElementById("progressBar");
+    var labelEl = document.getElementById("progressLabel");
+    var total = cards.length;
+
+    function refreshProgress() {
+      var done = 0;
+      cards.forEach(function (card) { if (card.classList.contains("done")) done++; });
+      countEl.textContent = done;
+      barEl.style.width = (total ? (done / total) * 100 : 0) + "%";
+      if (done === 0) labelEl.textContent = "of " + total + " reached out";
+      else if (done === total) labelEl.textContent = "all " + total + " contacted — nicely done";
+      else labelEl.textContent = "of " + total + " reached out";
+    }
+
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-id");
+      var input = card.querySelector('input[type="checkbox"]');
+      if (state[id]) {
+        input.checked = true;
+        card.classList.add("done");
+      }
+      input.addEventListener("change", function () {
+        card.classList.toggle("done", input.checked);
+        state[id] = input.checked;
+        saveState(state);
+        refreshProgress();
+      });
+    });
+    refreshProgress();
+
+    /* ---- gentle reveal on scroll ---- */
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add("in"); });
+    }
+  })();
+</script>
+</body>
+</html>
